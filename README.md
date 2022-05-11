@@ -1,16 +1,32 @@
-# Peregrine
+<p align='center'>
+   <img id="banner" src="./graphics/banner.png" style="width: 65%; align: center;"/>
+   <br/>
+   <i>A Blazing-Fast Language for the Blazing-Fast world.</i>
+   <br/><br/>
+   <a href="https://discord.gg/CAMgzwDJDM">
+      <img src="https://img.shields.io/discord/895990298419818546?logo=discord?style=social">
+   </a>
+   <img src="https://img.shields.io/github/stars/peregrine-lang/peregrine?style=social">
+   <br/>
+   <img src="https://img.shields.io/github/issues/peregrine-lang/peregrine?color=green">
+   <img src="https://img.shields.io/github/contributors/peregrine-lang/peregrine">
+   <br/>
+   <img src="https://img.shields.io/github/workflow/status/peregrine-lang/peregrine/Build%20-%20Meson">
+   <br/>
+   <h1>The Peregrine Programming Language</h1>
+</p>
 
-Peregrine is a compiled programming language currently under development. Docs coming soon.
+Peregrine is a Compiled, Systems Programming Language, currently under development.
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-# Why am I creating this language?
+## Purpose and intent
 
-I am creating it as a fast alternative to Python and an easy one to C.
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+### Why am I creating this language?
 
-# Goals
+I am creating it to have the simplicity of Python with the efficiency of C.
+
+### Goals
 
 - Ease of use
 - Fast
@@ -19,71 +35,91 @@ I am creating it as a fast alternative to Python and an easy one to C.
 - Compiled
 
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+### How does it work?
 
-# How does it work?
-
-You can consider it to be a superset of C which compiles to clean C. So valid c code is also valid Peregrine code (the language is named Peregrine). It will have no garbage collector because it is a system programming language but it will be very easy to use so there will be less chance of memory leak.
-
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
-# Requirements to build from source
- - Gcc compiler
- - V compiler
-
-# Build instruction
- 
-- Clone this repository using the following command -> `git clone https://github.com/Peregrine-lang/Peregrine.git`
-- Run `cd Peregrine/Peregrine`
-- To build it run `v Peregrine.v`
-- That's it
+You can consider it to be a dialect of python which compiles to clean C++. It will have no garbage collector because it is a system programming language.
 
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+## Building/compiling Peregrine
 
-# Primary implementation language
 
-For now it is written in V (visit vlang.io for more info) but in the future it will be self hosted.
+### Requirements to build from source
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+- [clang compiler](https://clang.llvm.org/)
 
-# Progress
+# Compilation instructions
 
-Currently we are working on the codegen and some Peregrine programs are working :) 
+**1) Clone the main branch of https://github.com/peregrine-lang/Peregrine.git**
+```bash
+git clone https://github.com/peregrine-lang/Peregrine.git
+```
+**2) Cd into the directory**
+```bash
+cd Peregrine
+```
+**3) Build it**
+```bash
+meson builddir
+cd builddir
+ninja
+```
+This will create the binary of the compiler named ``./peregrine.elf`` in the builddir folder
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+**C++ backend**
+To compile it using the c++ backing just run ``./peregrine.elf compile path_to_file.pe`` .It will create the executable named ``./path_to_file``. Run it to see the result. Check the [can_comp.pe](https://github.com/peregrine-lang/Peregrine/blob/rewrite/can_comp.pe) file in the root directory to know what you can do with the c++ backend at this point
 
-# Example
+**JS Backend**
+To use the javascript backend use the following command
+``./peregrine.elf compile path_to_file.js.pe -js``.
+It will create the javascript file named ``path_to_file.js``. Run the generated javascript using ``node path_to_file.js``. Check the [can_comp.js.pe](https://github.com/peregrine-lang/Peregrine/blob/rewrite/can_comp.js.pe) file in the root directory to know what you can do with the js backend at this point
+
+
+## Progress
+
+Currently we are working on the codegen and some Peregrine programs are working
+
+
+## Example
 
 Here is a small example for you to understand:
+
 ```py
+def fib(n:int) -> int :
+    if n <= 0:
+        return 1
+    return fib(n-1) + fib(n-2)
+
 def main():
-    print("hi")
+    count:int = 0
+    res:int = 0
+
+    while count < 40:
+        res = fib(count)
+        count++
+
 ```
+
 The `main` function is the entry point for the program.
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-# Have more questions?
+## Have questions?
 
 Cool, you can contact me via mail.
 <br> Email: saptakbhoumik@gmail.com
-
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-
-# Want to contribute?
-
-Great, go ahead and make the changes you want. 
+<br> Discord : https://discord.gg/CAMgzwDJDM
 
 
-Have a look at the [open issues](https://github.com/Peregrine-lang/Peregrine/issues) to find a mission that resonates with you.
 
-Please check [CONTRIBUTING.md](https://github.com/Peregrine-lang/Peregrine/blob/main/CONTRIBUTING.md) to know how you can contribute.
+## Want to contribute?
 
-If you create any new file make sure to comment your name in the file as shown   `Original author: Your name`
+Great, go ahead and make the changes you want, then submit a new pull request
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+Take a look at the [open issues](https://github.com/Peregrine-lang/Peregrine/issues) to find a mission that resonates with you.
+
+Please check [CONTRIBUTING.md](https://github.com/Peregrine-lang/Peregrine/blob/main/CONTRIBUTING.md) to learn how you can contribute.
+
+
 
 # License
 
-The Peregrine compiler is licensed under the [Mozilla Public License](https://github.com/Peregrine-lang/Peregrine/blob/main/LICENSE)
+The Peregrine compiler is licensed under the [Mozilla Public License](https://github.com/Peregrine-lang/Peregrine/blob/main/LICENSE), which is attached in this repository
